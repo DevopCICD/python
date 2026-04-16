@@ -46,7 +46,7 @@ pipeline {
                   mkdir -p ${PACKAGE_DIR}
 
                   echo "Installing dependencies..."
-                  pip3 install -r requirements.txt -t ${PACKAGE_DIR}
+                  pip3 install -r slackmessenger_requirements.txt -t ${PACKAGE_DIR}
 
                   echo "Copying lambda source..."
                   cp lambda_function.py ${PACKAGE_DIR}
