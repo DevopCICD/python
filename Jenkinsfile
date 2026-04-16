@@ -49,7 +49,7 @@ pipeline {
                   pip3 install -r slackmessenger_requirements.txt -t ${PACKAGE_DIR}
 
                   echo "Copying lambda source..."
-                  cp lambda_function.py ${PACKAGE_DIR}
+                  cp slackmessenger.py ${PACKAGE_DIR}
                 '''
             }
         }
