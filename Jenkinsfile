@@ -9,7 +9,7 @@ pipeline {
         )
         string(
             name: 'S3_BUCKET',
-            defaultValue: 'my-lambda-artifacts-bucket',
+            defaultValue: 'my-lambda-usecase',
             description: 'S3 bucket to upload Lambda zip'
         )
         string(
@@ -70,6 +70,9 @@ pipeline {
                      credentialsId: 'aws-credentials']
                 ]) {
                     sh '''
+                      aws s3 mb ${LAMBDA_NAME}
+                      echo "${LAMBDA_NAME} created successfully"
+                      echo "Uploading ${ZIP_NAME} to ${LAMBDA_NAME} bucket" 
                       aws s3 cp ${ZIP_NAME} \
                         s3://${S3_BUCKET}/${ENVIRONMENT}/${LAMBDA_NAME}/${ZIP_NAME} \
                         --region ${AWS_REGION}
