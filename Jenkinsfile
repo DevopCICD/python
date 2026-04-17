@@ -70,8 +70,8 @@ pipeline {
                      credentialsId: 'aws-credentials']
                 ]) {
                     sh '''
-                      aws s3 mb s3://${LAMBDA_NAME} --region ${AWS_REGION}
-                      echo "${LAMBDA_NAME} created successfully"
+                      aws s3 mb s3://${S3_BUCKET} --region ${AWS_REGION}
+                      echo "${S3_BUCKET} created successfully"
                       echo "Uploading ${ZIP_NAME} to ${LAMBDA_NAME} bucket" 
                       aws s3 cp ${ZIP_NAME} \
                         s3://${S3_BUCKET}/${ENVIRONMENT}/${LAMBDA_NAME}/${ZIP_NAME} \
